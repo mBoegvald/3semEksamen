@@ -27,6 +27,12 @@
     </div>
 
     <!-- Modal -->
+    <template class="playerTemplate">
+      <div class="player">
+        <p data-name></p>
+        <p data-score></p>
+      </div>
+    </template>
     <div id="module">
       <div class="module_logo"></div>
       <div class="module_content">
@@ -101,10 +107,15 @@
         </div>
         <div class="module_slide slide_3">
           <div class="slide_item_1">
+            <h2>HIGHSCORES</h2>
+
+            <div class="highscores"></div>
+          </div>
+          <div class="slide_item_2">
             <h2>DU FIK <span class="points_placeholder_1"></span> POINTS!</h2>
             <p>
               Det svarer til <span class="points_placeholder_2"></span> lodder i
-              konkurrencen om en tur til StarLadder SC:GO Major tourneringen i
+              konkurrencen om en tur til StarLadder CS:GO Major turneringen i
               Berlin, samt gavekort til eOddset. Deltag nu!
             </p>
 
@@ -160,7 +171,7 @@
       <div class="exit" id="close_black"></div>
       <div id="counterContainer">
         <p id="pointSystem">Score: <span>0</span></p>
-        <p id="countdown">Tid: <span>30</span></p>
+        <p id="countdown">Tid: <span>1</span></p>
       </div>
       <div id="crosshair_wrapper">
         <div id="crosshair_rect"></div>

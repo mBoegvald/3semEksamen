@@ -7,6 +7,7 @@ const crosshair = document.querySelector("#crosshair_rect");
 const crosshair_touch = document.querySelector("#crosshair");
 const gun = document.querySelector("#gun");
 const form = document.querySelector("form");
+const dest = document.querySelector(".highscores");
 let target;
 let latestTarget = null;
 let pointCounter = 0;
@@ -18,7 +19,37 @@ function init() {
       nextSlideModule();
     }
     document.querySelector(".confirm").style.color = "red";
+
+    fetch(
+      "https://danskespil-3a04.restdb.io/rest/signups?sort=score&dir=-1&max=10",
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "x-apikey": "5ce671e7780a473c8df5cb3b	",
+          "cache-control": "no-cache"
+        }
+      }
+    )
+      .then(e => e.json())
+      .then(e => {
+        showUsers(e);
+      });
   });
+
+  function showUsers(userInfo) {
+    let myTemplate = document.querySelector(".playerTemplate");
+    dest.textContent = "";
+
+    userInfo.forEach(Users => {
+      let clone = myTemplate.cloneNode(true).content;
+
+      clone.querySelector("[data-name]").textContent = Users.username;
+      clone.querySelector("[data-score]").textContent = Users.score + " Points";
+
+      dest.appendChild(clone);
+    });
+  }
 
   function nextSlideModule() {
     document.querySelector(".slide_2").classList.add("module_active");
@@ -335,7 +366,8 @@ document.querySelector("#deltag_bt").addEventListener("click", checkEmail);
 function checkEmail() {
   const user = {
     username: form.elements.name.value,
-    email: form.elements.email.value
+    email: form.elements.email.value,
+    score: pointCounter
   };
   fetch(
     "https://danskespil-3a04.restdb.io/rest/signups?q={%22email%22:%22" +

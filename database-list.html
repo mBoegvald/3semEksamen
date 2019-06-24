@@ -34,6 +34,10 @@
           <h2>Email</h2>
           <p data-email></p>
         </div>
+        <div>
+          <h2>score</h2>
+          <p data-score></p>
+        </div>
         <button>Delete User</button>
       </div>
     </template>
@@ -47,14 +51,17 @@
       window.addEventListener("DOMContentLoaded", getSignUpInfo);
 
       function getSignUpInfo() {
-        fetch("https://danskespil-3a04.restdb.io/rest/signups", {
-          method: "get",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "x-apikey": "5ce671e7780a473c8df5cb3b	",
-            "cache-control": "no-cache"
+        fetch(
+          "https://danskespil-3a04.restdb.io/rest/signups?q={}&h{%22$orderby%22:%20{%22score%22:-1}",
+          {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              "x-apikey": "5ce671e7780a473c8df5cb3b	",
+              "cache-control": "no-cache"
+            }
           }
-        })
+        )
           .then(e => e.json())
           .then(e => {
             arrayOfUsers = e;
@@ -85,6 +92,7 @@
 
           clone.querySelector("[data-username]").textContent = Users.username;
           clone.querySelector("[data-email]").textContent = Users.email;
+          clone.querySelector("[data-score]").textContent = Users.score;
 
           clone.querySelector("button").addEventListener("click", e => {
             e.target.parentElement.remove();

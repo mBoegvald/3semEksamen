@@ -61,10 +61,20 @@
   position: relative;
 }
 
-.slide_3,
+.slide_3 {
+  grid-template-columns: 50%;
+  max-width: 1000px;
+}
+
 .slide_4 {
   grid-template-columns: 100%;
   max-width: 500px;
+}
+
+.player {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 15px;
 }
 
 .module_active {
