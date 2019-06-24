@@ -1,0 +1,305 @@
+#module {
+  background: url(../pics/hero.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 9999999999999;
+}
+
+#startScreen,
+#startTimer {
+  cursor: none;
+}
+
+.hide_module {
+  display: none;
+}
+
+.module_logo {
+  width: 140px;
+  height: 70px;
+  background-image: url(../pics/logo.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}
+
+.module_content {
+  width: 400vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-auto-flow: column;
+}
+
+.module_slide {
+  width: 90%;
+  height: 100%;
+  display: grid;
+  margin: 0 auto;
+  grid-column-gap: 20px;
+}
+
+.slide_1 {
+  grid-template-columns: 62% 38%;
+  max-width: 900px;
+}
+
+.slide_2 {
+  grid-template-columns: 50% 50%;
+  max-width: 800px;
+  position: relative;
+}
+
+.slide_3,
+.slide_4 {
+  grid-template-columns: 100%;
+  max-width: 500px;
+}
+
+.module_active {
+  grid-column: 1 / 2;
+  transition: 1s;
+}
+
+.slide_item_1 {
+  grid-column: 1 / 2;
+  align-self: center;
+}
+.slide_item_2 {
+  grid-column: 2 / 3;
+  align-self: center;
+}
+
+.target_vector {
+  stroke: white;
+  stroke-width: 1;
+  fill: none;
+}
+
+.gun_vect {
+  stroke: white;
+  stroke-width: 1;
+  fill: none;
+  position: absolute;
+  bottom: -10px;
+  right: -5vw;
+  width: 25%;
+}
+
+.obj_2 {
+  height: 80vh;
+  max-width: 90%;
+}
+
+.obj_1 {
+  max-width: 90%;
+}
+
+.module_slide p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+}
+
+.confirm {
+  font-size: 0.8rem !important;
+  line-height: 1.1rem !important;
+  margin-top: 30px;
+}
+
+.compLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: none;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+input[type="checkbox"]:checked {
+  content: "x";
+  background: #abd;
+} */
+
+.module_slide h2 {
+  color: var(--lightOrange);
+  font-size: 3rem;
+  line-height: 3.2rem;
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 0 30px 0;
+}
+
+.points_placeholder_1,
+.points_placeholder_2 {
+  font-family: "Shentox";
+}
+
+.module_slide button {
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  background-color: var(--orange);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 55px;
+  width: 150px;
+  height: 50px;
+  vertical-align: middle;
+  outline: 0;
+  margin: 20px 0 0 0;
+}
+
+/* Form */
+#deltag_form {
+  margin: 20px 0 0 0;
+  color: white;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: none;
+  padding: 12px 20px;
+  margin: 0 0 30px 0;
+}
+
+.required_txt {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  color: white;
+}
+
+input[type="email"] {
+  margin: 0;
+}
+
+.label {
+  color: white;
+  font-size: 1rem;
+  line-height: 2rem;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+input[type="button"] {
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  background-color: var(--orange);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 55px;
+  width: 150px;
+  height: 50px;
+  vertical-align: middle;
+  outline: 0;
+  margin: 40px 0 0 0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.one-opacity {
+  animation: opacity-up 1s forwards;
+  pointer-events: all;
+}
+
+#del {
+  background-color: #fff;
+  color: #000;
+  margin-bottom: 20px;
+  line-height: auto;
+}
+
+.slide_4 a {
+  color: var(--lightOrange);
+}
+
+@keyframes opacity-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.zero-opacity {
+  animation: opacity-down 1s forwards;
+  pointer-events: none;
+}
+
+@keyframes opacity-down {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .slide_1,
+  .slide_2,
+  .slide_3,
+  .slide_4 {
+    grid-template-columns: 100%;
+  }
+
+  .slide_2 .slide_item_1 {
+    display: none;
+  }
+
+  .slide_2 .slide_item_2 {
+    grid-column: 1 / 2;
+  }
+
+  .module_slide p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .module_slide h2 {
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    margin: 20px 0 20px 0;
+  }
+}

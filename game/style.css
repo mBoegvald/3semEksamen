@@ -1,0 +1,476 @@
+@font-face {
+  font-family: "Shentox";
+  src: url("../fonts/Shentox-Regular7.eot");
+  src: url("../fonts/Shentox-Regular7.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shentox-Regular7.woff2") format("woff2"),
+    url("../fonts/Shentox-Regular7.woff") format("woff"),
+    url("../fonts/Shentox-Regular7.ttf") format("truetype"),
+    url("../fonts/Shentox-Regular7.svg#fonts/Shentox-Regular7") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+img,
+svg {
+  width: 100%;
+  height: auto;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+}
+
+.hideoverflow {
+  overflow: hidden;
+}
+
+#startScreen {
+  z-index: 1000;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#startButton {
+  background-color: #dc5f11;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  line-height: 70px;
+  width: 10vw;
+  height: 10vh;
+  vertical-align: middle;
+  outline: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 2.5vw;
+  cursor: pointer;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+#startButton:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+#startTimer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 20vw;
+  color: white;
+  pointer-events: none;
+}
+
+#game {
+  width: 100vw;
+  height: 56.25vw;
+  cursor: none;
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#stage {
+  position: relative;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+.gamelayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+}
+
+#foreground {
+  z-index: 500;
+  background-image: url(foreground_mobile_portrait.png);
+}
+
+#middleground {
+  z-index: 400;
+  background-image: url(middleground_mobile_portrait.png);
+}
+
+#background {
+  z-index: 300;
+  background-image: url(background_mobile_portrait.jpg);
+}
+
+#crosshair_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#crosshair_rect {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+}
+
+#crosshair {
+  align-self: center;
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+#gun {
+  width: 19vw;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 15vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#counterContainer {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-size: 1.5vw;
+  z-index: 500;
+  transform: translateX(-50%);
+  line-height: 0.9;
+  font-family: "Shentox";
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+#counterContainer span {
+  font-size: 2.5vw;
+}
+
+.target {
+  position: absolute;
+  background-image: url(target.png);
+  background-size: 100% auto;
+  transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  transform-origin: bottom;
+  transition: 0.3s ease-in;
+}
+
+#target-0 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 31%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-1 {
+  width: 4vw;
+  height: 4.6vw;
+  left: 28.75%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-2 {
+  width: 8vw;
+  height: 8vw;
+  left: 58%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-3 {
+  width: 4.5vw;
+  height: 4vw;
+  left: 35.5%;
+  top: 40%;
+  z-index: 350;
+}
+
+#target-4 {
+  width: 3.5vw;
+  height: 7.3vw;
+  left: 60.8%;
+  top: 40%;
+  z-index: 350;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center left;
+}
+
+#target-5 {
+  width: 8vw;
+  height: 9vw;
+  left: 49%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-6 {
+  width: 4vw;
+  height: 3.5vw;
+  left: 43%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-7 {
+  width: 4vw;
+  height: 3.5vw;
+  left: 45.7%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-8 {
+  width: 8vw;
+  height: 9vw;
+  left: 25%;
+  top: 41%;
+  z-index: 450;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center left;
+}
+
+#target-9 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 40%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-10 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 71%;
+  top: 43%;
+  z-index: 450;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center right;
+}
+
+#target-11 {
+  width: 3.8vw;
+  height: 8vw;
+  left: 51.2%;
+  top: 39.5%;
+  z-index: 350;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center right;
+}
+
+.target.active {
+  animation: from-bottom 0.3s forwards ease-in;
+}
+@keyframes from-bottom {
+  0% {
+    transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+}
+.target.hide {
+  animation: to-bottom 0.15s forwards ease-in;
+}
+@keyframes to-bottom {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  }
+}
+.target.activeAlt {
+  animation: from-left 0.15s forwards ease-in;
+  transform-origin: center left;
+}
+@keyframes from-left {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+}
+.target.hideAlt {
+  animation: to-left 0.15s forwards ease-in;
+  transform-origin: center left;
+}
+@keyframes to-left {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  }
+}
+
+.gun-animation {
+  animation: shot-animation 0.35s ease-in-out;
+}
+
+@keyframes shot-animation {
+  0% {
+    transform: rotate(0deg) scale(1) skew(0deg, 0deg);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.2) skew(-5deg, 15deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) skew(0deg, 0deg);
+  }
+}
+
+.crosshair_absolute {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.exit {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 9999;
+  background-size: cover;
+}
+
+#close_black {
+  background-image: url(close_black.svg);
+  background-size: cover;
+  display: none;
+}
+
+#close_white {
+  background-image: url(close_white.svg);
+  background-size: cover;
+}
+
+.gametip {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1080px) and (orientation: landscape) {
+  #close_black {
+    background-image: url(close_black.svg);
+    display: block;
+  }
+
+  #close_white {
+    background-image: url(close_white.svg);
+    display: none;
+  }
+
+  .gametip {
+    display: none;
+  }
+
+  #foreground {
+    background-image: url(foreground_mobile.png);
+  }
+
+  #middleground {
+    background-image: url(middleground_mobile.png);
+  }
+
+  #background {
+    background-image: url(background_mobile.jpg);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #crosshair {
+    align-self: center;
+    max-height: 4rem;
+    max-width: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  #close_black {
+    display: none;
+  }
+
+  #close_white {
+    display: none;
+  }
+
+  .gametip {
+    display: none;
+  }
+
+  #foreground {
+    background-image: url(foreground_medium.png);
+  }
+
+  #middleground {
+    background-image: url(middleground_medium.png);
+  }
+
+  #background {
+    background-image: url(background_medium.jpg);
+  }
+
+  #gun {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #foreground {
+    background-image: url(foreground.png);
+  }
+
+  #middleground {
+    background-image: url(middleground.png);
+  }
+
+  #background {
+    background-image: url(background.jpg);
+  }
+}
